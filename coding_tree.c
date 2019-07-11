@@ -1,3 +1,5 @@
+#include "coding_tree.h"
+
 void ctree_free_tree (ctree_node *a)
 {
 	if (a -> children[0] != NULL)
@@ -10,3 +12,10 @@ void ctree_free_tree (ctree_node *a)
 	}
 	free (a);
 }
+typedef st_ctree_node node;
+struct st_ctree_node
+{
+    char letter;
+    unsigned int freq;
+    node children[2];
+};
