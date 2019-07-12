@@ -7,39 +7,44 @@ struct st_bitstream
 	char buffer;
 	FILE* file;
 };
-bitstream* bitstream_init(char* file_name)
+bitstream* bitstream_init(char* file_name, char rorw)
 {
 	bitstream* b_stream = (bitstream*)malloc(sizeof(bitstream));
-	b_stream->file = fopen("file_name", "wr");
+	b_stream->file = fopen("file_name", rorw);
+	if (rorw == 'r')
+	{
+		fread(b_stream->buffer, sizeof(char), 1, b_stream->file);
+	}
 	b_stream->index = 0;
 	b_stream->buffer = '0';
 	return b_stream;
 }
-bitstream* bitstream_dump(char bit)
+bitstream* bitstream_dump(bitstream* bit)
 {
-	bit = '0';
+	fwrite(bit->buffer, sizeof(char), 1, bit->file);
+	bit->buffer = '0';
 	return bit;
 }
-bitstream* bitstream_put_bit(char bit, bitstream* b_stream)
+bitstream* bitstream_put_bit(bitstream* bit, bitstream* b_stream)
 {
-	b_stream->buffer |= bit<<7 - b_stream->index;
+	b_stream->buffer |= bit->buffer<<7 - b_stream->index;
 	b_stream->index++;
 	if (b_stream->index > 7)
 	{
-		bitstream_dump(bit);
+		bitstream_dump(b_stream);
 		b_stream->index = 0;
 	}
 }
-bitstream* bitstream_get_bit(bitstream* b_stream)
+char bitstream_get_bit(bitstream* b_stream)
 {
-	char read, symbol;
-	b_stream->buffer |= symbol<<7 - b_stream->index;
+	char bit;
+	bit |= b_stream->buffer<<7 - b_stream->index;
 	b_stream->index++;
 	if (b_stream->index > 7)
 	{
-		bitstream_dump(b_stream->buffer);
+		b_stream->buffer = '0';
 		b_stream->index = 0;
-		read = fread(symbol, sizeof(char), 1, b_stream->file);
+		fread(b_stream->buffer, sizeof(char), 1, b_stream->file);
 	}
-	return b_stream->buffer;
+	return bit;
 }
