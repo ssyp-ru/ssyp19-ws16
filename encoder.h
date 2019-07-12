@@ -2,6 +2,7 @@
 #define ENCODER_H_INCLUDED
 #include <stdlib.h>
 #include <stdio.h>
+#define 257 BUFFER_SIZE
 typedef st_ctree_node ctree_node;
 typedef st_code code;
 struct st_code
