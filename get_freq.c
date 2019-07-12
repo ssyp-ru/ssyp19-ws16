@@ -21,10 +21,11 @@ printf("%d",freq['a']);
 
 
 
-
+/*
 int main(){
     FILE *input = fopen("C:\\C\\File1.txt","r");
     char buffer[B_S];
     int char_read = fread(buffer, sizeof(char),B_S,input);
     get_freq(buffer,char_read);
 }
+*/
