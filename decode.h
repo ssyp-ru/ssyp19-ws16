@@ -8,4 +8,4 @@ char tree_get_char(ctree_node *derevo,bitstream *logic);
 node huf_rebuild_tree(FILE *input);
 void decode(FILE *from, FILE *where);
 node huf_rebuild_tree(FILE *input);
-#endif // DECODE_H_INCLUDED
+#endif
