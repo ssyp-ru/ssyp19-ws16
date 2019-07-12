@@ -7,10 +7,10 @@ struct st_bitstream
 	char buffer;
 	FILE* file;
 };
-bitstream* bitstream_init(char* file_name, char rorw)
+bitstream* bitstream_init(FILE* file, char rorw)
 {
 	bitstream* b_stream = (bitstream*)malloc(sizeof(bitstream));
-	b_stream->file = fopen("file_name", rorw);
+	b_stream->file = file;
 	if (rorw == 'r')
 	{
 		fread(b_stream->buffer, sizeof(char), 1, b_stream->file);
