@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void get_freq (char *buffer,int size,FILE *input){
+void get_freq (FILE *input){
+char buffer[257];
+}
+int size = fread(buffer, sizeof(char),257,input)
 int freq[257];
 for (int i=0;i<257;i++){
     freq[i] = 0;
