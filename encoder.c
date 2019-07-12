@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-encode(char *in,char *ou){
+void encode(char *in,char *ou){
     FILE *input = fopen(in,"rb");
     FILE *out = fopen(ou,"wb+");
     int char_read = fread(buffer, sizeof(char),257,input);
