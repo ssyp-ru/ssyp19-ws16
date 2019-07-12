@@ -1,19 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define 257 BUFFER_SIZE
-typedef st_ctree_node ctree_node;
-typedef st_code code;
-struct st_code
-{
-	int size;
-	char code[257];
-};
-struct st_ctree_node
-{
-	char letter;
-	unsigned int freq;
-	ctree_node *children[2];
-};
+#include "encoder.h"
+
 void get_freq (FILE *input){
 char buffer[257];
 int size = fread(buffer, sizeof(char),257,input)
