@@ -19,3 +19,12 @@ struct st_ctree_node
     unsigned int freq;
     node children[2];
 };
+node *new_node (int freq, char letter)
+{
+	node *nov = (node *) malloc(sizeof(node));
+	nov-> freq = freq;
+	nov -> letter = "letter"
+	nov->children[0] = NULL;
+	nov->children[1] = NULL;
+	return nov;
+}
