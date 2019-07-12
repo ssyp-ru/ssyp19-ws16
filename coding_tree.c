@@ -45,7 +45,7 @@ ctree_node *ctree_sort(ctree_node *mass_of_nodes[])
     }
 }
 
-ctree_node *ctree_build_tree(unsigned int *mass_of_int[])
+ctree_node *ctree_build_tree(unsigned int mass_of_int[])
 {
     for (int j = 0; j < 257; j++)
     {

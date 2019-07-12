@@ -13,16 +13,15 @@ bitstream *bitstream_init(FILE *file, char rorw)
     return b_stream;
 }
 
-bitstream *bitstream_dump(bitstream *bit)
+void bitstream_dump(bitstream *bit)
 {
     fwrite(bit->buffer, sizeof(char), 1, bit->file);
-    bit->buffer = '0';
-    return bit;
+    bit->buffer = 0;
 }
 
-bitstream *bitstream_put_bit(bitstream *bit, bitstream *b_stream)
+void bitstream_put_bit(char bit, bitstream *b_stream)
 {
-    b_stream->buffer |= bit->buffer << 7 - b_stream->index;
+    b_stream->buffer |= bit << (7 - b_stream->index);
     b_stream->index++;
     if (b_stream->index > 7)
     {

@@ -14,9 +14,9 @@ struct st_bitstream
 
 bitstream *bitstream_init(FILE *file, char rorw);
 
-bitstream *bitstream_dump(bitstream *bit);
+void bitstream_dump(bitstream *b_stream);
 
-bitstream *bitstream_put_bit(bitstream *bit, bitstream *b_stream);
+void bitstream_put_bit(char bit, bitstream *b_stream);
 
 char bitstream_get_bit(bitstream *b_stream);
 
