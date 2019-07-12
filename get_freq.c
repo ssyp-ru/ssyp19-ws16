@@ -13,13 +13,9 @@ for (int i=0;i<257;i++){
 for (int i=0;i<dlina;i++){
 freq[buffer[i]] += 1;
 }
-printf("%d",freq['a']);
+return freq;
 }
 // -------
-
-
-
-
 
 /*
 int main(){
