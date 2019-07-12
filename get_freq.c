@@ -3,7 +3,7 @@
 #define B_S 300
 
 // ENCODER
-void get_freq (char *buffer,int dlina){
+void get_freq (char *buffer,int dlina,FILE *input){
 int freq[257];
 for (int i=0;i<257;i++){
     freq[i] = 0;
@@ -13,6 +13,7 @@ for (int i=0;i<257;i++){
 for (int i=0;i<dlina;i++){
 freq[buffer[i]] += 1;
 }
+rewind(FILE*input)
 return freq;
 }
 // -------
