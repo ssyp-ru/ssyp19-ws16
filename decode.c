@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include coding_tree.h
-#define BUFER_SIZE = 257
-
 char tree_get_char(ctree_node *derevo,bitstream *logic){
 for(derevo -> children[0] =! NULL){
     if(bitstream_get_bit(logic)) = 0){
@@ -46,4 +41,3 @@ void decode(FILE *from, FILE *where)
     }
     return where
 }
-
