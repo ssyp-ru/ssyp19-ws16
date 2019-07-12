@@ -13,18 +13,15 @@ for (int i=0;i<257;i++){
 for (int i=0;i<dlina;i++){
 freq[buffer[i]] += 1;
 }
-printf("%d",freq['a']);
+return freq;
 }
 // -------
 
-
-
-
-
-
+/*
 int main(){
     FILE *input = fopen("C:\\C\\File1.txt","r");
     char buffer[B_S];
     int char_read = fread(buffer, sizeof(char),B_S,input);
     get_freq(buffer,char_read);
 }
+*/
