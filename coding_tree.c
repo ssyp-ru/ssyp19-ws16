@@ -1,14 +1,21 @@
 #include "coding_tree.h"
 
+typedef st_ctree_node ctree_node;
+struct st_ctree_node
+{
+    int letter;
+    unsigned int freq;
+    ctree_node children[2];
+};
 void ctree_free_tree (ctree_node *a)
 {
 	if (a -> children[0] != NULL)
 	{
-		ctree_free_tree(a->children[0]);
+		ctree_free_tree (a->children[0]);
 	}
 	if (a -> children[1] != NULL)
 	{
-		ctree_free_tree(a->children[1]);
+		ctree_free_tree (a->children[1]);
 	}
 	free (a);
 }
@@ -44,6 +51,7 @@ ctree_node* ctree_sort (ctree_node* mass_of_nodes)
 		}
 	}
 }
+
 ctree_node* ctree_build_tree (unsigned int* mass_of_int)
 {
 	for(int j = 0; j < 257; j++)
