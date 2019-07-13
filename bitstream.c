@@ -12,7 +12,6 @@ bitstream *bitstream_init(FILE *file, char rorw)
     b_stream->buffer = '0';
     return b_stream;
 }
-
 void bitstream_dump(bitstream *bit)
 {
     fwrite(bit->buffer, sizeof(char), 1, bit->file);

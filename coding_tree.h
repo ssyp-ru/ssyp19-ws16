@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "definitions.h"
 
 typedef struct st_ctree_node ctree_node;
 struct st_ctree_node
@@ -13,7 +14,7 @@ struct st_ctree_node
 };
 
 ctree_node *new_ctree_node(unsigned int freq, char letter, ctree_node *child_0, ctree_node *child_1);
-ctree_node *ctree_sort(ctree_node *mass_of_nodes[]);
+void ctree_sort(ctree_node *mass_of_nodes[], int index);
 ctree_node *ctree_build_tree(unsigned int mass_of_int[]);
 void ctree_free_tree(ctree_node *a);
 

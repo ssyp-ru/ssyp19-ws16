@@ -5,8 +5,9 @@
 #include <stdlib.h>
 #include "coding_tree.h"
 #include "bitstream.h"
+#include "definitions.h"
 
-#define BUFER_SIZE 257
+#define BUFFER_SIZE 257
 
 char tree_get_char(ctree_node *derevo, bitstream *logic);
 

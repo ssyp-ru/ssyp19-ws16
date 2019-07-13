@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "definitions.h"
 
 typedef struct st_bitstream bitstream;
 struct st_bitstream
@@ -20,4 +21,4 @@ void bitstream_put_bit(char bit, bitstream *b_stream);
 
 char bitstream_get_bit(bitstream *b_stream);
 
-#endif // BITSTREAM_H_INCLUDED
+#endif

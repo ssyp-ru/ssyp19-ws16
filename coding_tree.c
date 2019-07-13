@@ -24,46 +24,45 @@ ctree_node *new_ctree_node(unsigned int freq, char letter, ctree_node *child_0, 
     return nov;
 }
 
-ctree_node *ctree_sort(ctree_node *mass_of_nodes[])
+void ctree_sort(ctree_node *mass_of_nodes[], int index)
 {
-    ctree_node *cur_node, *swap;
-    for (int index = 0; index < 257; index++)
-    {
-        cur_node = mass_of_nodes[index];
-        while (cur_node != mass_of_nodes[0])
-        {
-            if (cur_node->freq > mass_of_nodes[index - 1]->freq)
-            {
-                swap = mass_of_nodes[index - 1];
-                mass_of_nodes[index - 1] = cur_node;
-                mass_of_nodes[index] = swap;
-            } else
-            {
-                continue;
-            }
-        }
-    }
+	ctree_node* swap;
+	for (int i = index; i > 0; i--)
+		{
+		if (mass_of_nodes[i] > mass_of_nodes[i-1])
+		{
+			swap = mass_of_nodes[i-1];
+			mass_of_nodes[i-1] = mass_of_nodes[i];
+			mass_of_nodes[i] = swap;
+		}
+		else
+		{
+			break;
+		}
+	}
 }
 
 ctree_node *ctree_build_tree(unsigned int mass_of_int[])
 {
-    for (int j = 0; j < 257; j++)
+	int count = 0;
+	ctree_node *mass_of_nodes[BUFFER_SIZE];
+    for (int j = 0; j < BUFFER_SIZE; j++)
     {
-        if (mass_of_int[j] == NULL)
+        if (mass_of_int[j] != 0)
         {
-            free(mass_of_int[j]);
+			mass_of_nodes[count] = new_ctree_node(mass_of_int[j], j, NULL, NULL);
+			count++;
         }
     }
-    ctree_node *mass_of_nodes[257];
-    for (int i = 0; i < 257; i++)
-    {
-        mass_of_nodes[i] = new_ctree_node(mass_of_int[i], i, NULL, NULL);
-    }
-    ctree_sort(mass_of_nodes);
-    for (int index = 256; index > 0; index--)
+    for (int i = 1; i < count; i++)
+	{
+		ctree_sort(mass_of_nodes, i);
+	}
+    for (int index = count; index > 0; index--)
     {
         mass_of_nodes[index - 1] = new_ctree_node(mass_of_nodes[index]->freq + mass_of_nodes[index - 1]->freq,
                                                   0, mass_of_nodes[index], mass_of_nodes[index - 1]);
+        ctree_sort(mass_of_nodes, index - 1);
     }
     return mass_of_nodes[0];
 }
