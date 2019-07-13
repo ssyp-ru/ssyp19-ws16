@@ -1,5 +1,5 @@
 #include "decoder.h"
-
+/*
 char tree_get_char(ctree_node *derevo, bitstream *logic)
 {
     while (derevo->children[0] != NULL)
@@ -11,12 +11,12 @@ char tree_get_char(ctree_node *derevo, bitstream *logic)
         }
         else{
             derevo = derevo ->children[1];
-        }*/
+        }
     }
     return derevo->letter;
 
 }
-
+*/
 ctree_node *huf_rebuild_tree(FILE *input)
 {
     int read;
@@ -29,17 +29,19 @@ ctree_node *huf_rebuild_tree(FILE *input)
 
 void decode(char *from, char *where)
 {
-    bitstream *file = bitstream_init(from, 'r');
-    ctree_node *tree = huf_rebuild_tree(from);
+	FILE *fromf = fopen(from, "rb");
+	FILE *wheref = fopen(where, "wb+");
+    bitstream *file = bitstream_init(fromf, 'r');
+    ctree_node *tree = huf_rebuild_tree(fromf);
     ctree_node *tree1;
     tree1 = tree;
-    while (tree->letter != 257)
+    while (tree->letter != BUFFER_SIZE)
     {
         while (tree->children[0] != NULL)
         {
             tree = tree->children[bitstream_get_bit(file)];
         }
-        fwrite(tree->letter, sizeof(char), 1, *where);
+        fwrite(&tree->letter, sizeof(char), 1, wheref);
     }
     tree = tree1;
 }

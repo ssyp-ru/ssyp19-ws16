@@ -32,7 +32,7 @@ void bitstream_put_bit(char bit, bitstream *b_stream)
 char bitstream_get_bit(bitstream *b_stream)
 {
     char bit;
-    bit |= b_stream->buffer << 7 - b_stream->index;
+    bit |= b_stream->buffer >> 7 - b_stream->index & 1;
     b_stream->index++;
     if (b_stream->index > 7)
     {

@@ -9,7 +9,7 @@
 
 #define BUFFER_SIZE 257
 
-char tree_get_char(ctree_node *derevo, bitstream *logic);
+//char tree_get_char(ctree_node *derevo, bitstream *logic);
 
 ctree_node *huf_rebuild_tree(FILE *input);
 
